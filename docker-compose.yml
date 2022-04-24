@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+
+    worker:
+        build: 
+            context: ./worker
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        volumes: 
+            - ./files:/files
+            - ./worker:/worker
+        environment: 
+            - DB_FOLDER=/files
+            - JSON_DUMPS_FOLDER=/files/daily_json_dumps
+            - QUERY_INTERVAL_IN_SECONDS=14400
