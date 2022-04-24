@@ -105,7 +105,7 @@ def get_dates_to_request(streaming_provider):
     now = date.today()
     with closing(sqlite3.connect(db_file_path)) as connection:
         with closing(connection.cursor()) as cursor:
-            for i in range(1):
+            for i in range(7):
                 date_to_request = build_date_string(now + timedelta(days=i))
                 existing_records = cursor.execute(
                     'select * from movies where streaming_provider = ? and air_date = ?',
